@@ -96,8 +96,21 @@
                 <ul id="menu-main_top-menu" class="nav navbar-nav center">
                     @php($links = \App\Models\Adfm\Menu::getData('main'))
                     @foreach ($links[0] as $el)
-                    <li itemscope="itemscope" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-19"><a title="Главная" href="{{$el->link}}">{{$el->title}}</a></li>
-                    @endforeach                    
+                        <li itemscope="itemscope" class="menu-item menu-item-type-post_type menu-item-object-page
+                            @if(isset($links[$el->id]) && $el->id != 0)
+                                menu-item-has-children dropdown"> 
+                                <a title="{{$el->title}}" href="http://-" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle">{{$el->title}} <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    @foreach ($links[$el->id] as $sub_el)
+                                        <li itemscope="itemscope" class="menu-item menu-item-type-post_type menu-item-object-page @if($sub_el->link == url()->current()) current-menu-item page_item current_page_item active @endif"><a title="{{$sub_el->title}}" href="{{$sub_el->link}}">{{$sub_el->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                            @else
+                            @if($el->link == url()->current() || $el->link == url()->current().'/') current-menu-item current_page_item active @endif">
+                                <a title="{{$el->title}}" href="{{$el->link}}">{{$el->title}}</a>
+                            @endif
+                        </li>
+                    @endforeach
                 </ul>
                 </div>
                 </div> 
