@@ -1,3 +1,22 @@
+@php
+    $menu = \App\Models\Adfm\Menu::getData('main');
+    // dd($menu);
+    function subMenu($menu, $links){
+        echo "<ul>";
+        foreach ($links as $el) {
+            echo "<li> $el->title";
+            if(isset($menu[$el->id])){
+                subMenu($menu, $menu[$el->id]);                
+            }
+            echo "</li>";
+        }
+        echo "</ul>";
+    }
+@endphp
+
+    {{subMenu($menu, $menu[0])}}
+
+@php(die);
 <!doctype html>
 <html lang="ru">
 <head>
