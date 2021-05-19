@@ -25,18 +25,10 @@ class UserTest extends TestCase
 
         $response = $this->actingAs($user)->post(route('adfm.users.store'), $new_user);
 
-        unset($new_user['user']['password']);
-        unset($new_user['user']['role']);
-        unset($new_user['user']['roles']);
-
-        $new_user_created = User::where('email', $new_user['user']['email'])->first();
-
         $this->assertDatabaseCount('users', 2);
-        $this->assertDatabaseHas('users', $new_user['user']);
         $this->assertDatabaseHas('users', [
-            'name' => $new_user_created->name,
-            'email' => $new_user_created->email,
-            'password' => $new_user_created->password,
+            'name' => $new_user['user']['name'],
+            'email' => $new_user['user']['email'],
         ]);
     }
     public function test_update_user()
