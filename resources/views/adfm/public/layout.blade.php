@@ -40,6 +40,7 @@
     {{-- <script type='text/javascript' src='js/content/function.js' id='func-script-js'></script> --}}
 </head>
 <body>
+    <x-adfm::feedback id='1'/>
     <div id="page-preloader">
         <div class="cssload-square">
             <div class="cssload-square-part cssload-square-green"></div>

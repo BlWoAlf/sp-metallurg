@@ -21,11 +21,9 @@
         });
         console.log(data);
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "{{ route('adfm.feedbacks.store') }}",
             data: data
-        }).done(function( msg ) {
-            alert( "Data Saved: " + msg );
         });
     });
 
