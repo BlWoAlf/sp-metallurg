@@ -19,7 +19,6 @@
             data['fields'][$(field).find('.form-control').attr('name')] = $(field).find('.form-control').val();
             // console.log($(field).find('.form-control').val(), $(field).find('.form-control'))
         });
-        console.log(data);
         $.ajax({
             method: "POST",
             url: "{{ route('adfm.feedbacks.store') }}",

@@ -25,7 +25,7 @@ class FeedbackController extends Controller
         \Illuminate\Support\Facades\Mail::send('adfm::email.feedback', ['item' => $item], function($message)
         {
             $message->from('info@mail-robot.wtolk.ru', 'Почтовый робот');
-            $message->to('misha-seryak@ya.ru')->subject('Сообщение с сайта Энесай');;
+            $message->to('misha-seryak@ya.ru')->subject('Сообщение с сайта Энесай');
         });
         return '200';
     }
